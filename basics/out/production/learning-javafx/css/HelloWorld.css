@@ -1,0 +1,15 @@
+.root {
+    -fx-background-color: #202020;
+    -fx-fill: #E0E0E0;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.title {
+    -fx-font-size: 20px;
+    -fx-fill: #E0E0E0;
+}
+
+.label {
+    -fx-text-fill: #E0E0E0;
+}
