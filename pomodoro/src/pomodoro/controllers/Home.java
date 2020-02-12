@@ -93,10 +93,12 @@ public class Home {
   }
 
   public void playTimer() {
+    container.getStyleClass().add("playing");
     mTimeline.play();
   }
 
   public void pauseTimer() {
+    container.getStyleClass().remove("playing");
     mTimeline.pause();
   }
 
@@ -105,17 +107,26 @@ public class Home {
   }
 
   private void clearAttemptStyles() {
+    container.getStyleClass().remove("playing");
     for (AttemptKind kind : AttemptKind.values()) {
       container.getStyleClass().remove(kind.toString().toLowerCase());
     }
   }
 
-  public void DEBUG(ActionEvent actionEvent) {
-    System.out.println("DEBUG ACTIVE");
-  }
-
   public void handleRestart(ActionEvent actionEvent) {
     prepareAttempt(AttemptKind.FOCUS);
     playTimer();
+  }
+
+  public void handlePlay(ActionEvent event) {
+    if (mCurrentAttempt == null) {
+      handleRestart(event);
+    } else {
+      playTimer();
+    }
+  }
+
+  public void handlePause(ActionEvent event) {
+    pauseTimer();
   }
 }
